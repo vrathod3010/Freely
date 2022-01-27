@@ -1,5 +1,5 @@
 export * from './Container'
 export * from './Text'
 export * from './BottomTabBar'
-export * from './TripCard'
+export * from './TripCard/TripCard'
 export * from './Destination'

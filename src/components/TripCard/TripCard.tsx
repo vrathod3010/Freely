@@ -1,42 +1,18 @@
-import React, {FC, useEffect, useState} from 'react'
+import React, {FC} from 'react'
 import {StyleSheet, TouchableOpacity, View} from 'react-native'
 
 import {Card} from 'react-native-elements'
-import {Colors} from '../utils'
-import {FText} from './Text'
-import {NativeStackNavigationProp} from '@react-navigation/native-stack'
-import {RootStackParamList} from '../App'
-import {Trip} from '../models'
-import {useAppState} from '../hooks'
-import {useNavigation} from '@react-navigation/native'
+import {FText} from '../Text'
+import {Trip} from '../../models'
+import {useTripCard} from './useTripCard'
 
 interface Props {
   item: Trip
 }
 export const TripCard: FC<Props> = ({item}) => {
-  const navigation =
-    useNavigation<
-      NativeStackNavigationProp<RootStackParamList, 'TripsScreen'>
-    >()
-
-  const [randomBackground, setRandomBackground] = useState<string>()
-
-  const {appStateVisible} = useAppState()
-
-  useEffect(() => {
-    if (appStateVisible === 'background') {
-      setRandomBackground(
-        Colors.RANDOM_COLORS[
-          Math.floor(Math.random() * Colors.RANDOM_COLORS.length)
-        ],
-      )
-    }
-  }, [appStateVisible])
-
+  const {onCardPress, randomBackground} = useTripCard()
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      onPress={() => navigation.push('TripDetailScreen', {trip: item})}>
+    <TouchableOpacity activeOpacity={0.8} onPress={() => onCardPress(item)}>
       <Card
         containerStyle={
           item.status === 'NOT_STARTED' && {
