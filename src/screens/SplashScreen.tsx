@@ -3,15 +3,13 @@ import {Container, FText} from '../components'
 import React, {useEffect} from 'react'
 import {StatusBar, StyleSheet} from 'react-native'
 
-import {NativeStackNavigationProp} from '@react-navigation/native-stack'
 import {RootStackParamList} from '../App'
+import {StackNavigationProp} from '@react-navigation/stack'
 import {useNavigation} from '@react-navigation/native'
 
 export const SplashScreen = () => {
   const navigation =
-    useNavigation<
-      NativeStackNavigationProp<RootStackParamList, 'SplashScreen'>
-    >()
+    useNavigation<StackNavigationProp<RootStackParamList, 'SplashScreen'>>()
 
   useEffect(() => {
     setTimeout(() => {
