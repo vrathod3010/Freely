@@ -1,2 +1,5 @@
-export * from './HomeScreen'
+export * from './MainScreen'
 export * from './SplashScreen'
+export * from './HomeScreen'
+export * from './TripsScreen'
+export * from './TripDetailScreen'

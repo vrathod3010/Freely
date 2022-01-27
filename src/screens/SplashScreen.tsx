@@ -1,10 +1,10 @@
+import {Colors, Strings} from '../utils'
 import {Container, FText} from '../components'
 import React, {useEffect} from 'react'
+import {StatusBar, StyleSheet} from 'react-native'
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack'
 import {RootStackParamList} from '../App'
-import {StatusBar} from 'react-native'
-import {Strings} from '../utils'
 import {useNavigation} from '@react-navigation/native'
 
 export const SplashScreen = () => {
@@ -15,28 +15,26 @@ export const SplashScreen = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('HomeScreen')
+      navigation.replace('MainScreen')
     }, 3000)
   }, [navigation])
 
   return (
-    <Container style={{backgroundColor: 'rgb(30,32,38)'}}>
-      <StatusBar
-        barStyle={'light-content'}
-        animated
-        backgroundColor={'transparent'}
-        translucent
-      />
-      <FText
-        style={{
-          color: '#00f1e5',
-          fontWeight: 'bold',
-          fontSize: 45,
-          lineHeight: 65,
-        }}
-        type="h1">
+    <Container style={styles.container}>
+      <StatusBar barStyle={'light-content'} animated translucent />
+      <FText style={styles.text} type="h1">
         {Strings.SPLASH_SCREEN_TITLE}
       </FText>
     </Container>
   )
 }
+
+const styles = StyleSheet.create({
+  text: {
+    color: Colors.PRIMARY_TEXT,
+    fontWeight: 'bold',
+    fontSize: 45,
+    lineHeight: 65,
+  },
+  container: {backgroundColor: Colors.SCREEN_BACKGROUND_DARK},
+})
