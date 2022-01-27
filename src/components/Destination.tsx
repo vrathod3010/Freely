@@ -11,7 +11,7 @@ export const Destination: FC<Props> = ({item}) => {
   return (
     <Card>
       <Card.Title>
-        <FText style={styles.text} type="h1">
+        <FText type="caption" style={styles.text}>
           {item}
         </FText>
       </Card.Title>

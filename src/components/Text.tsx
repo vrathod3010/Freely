@@ -4,19 +4,28 @@ import {StyleSheet, Text, TextProps} from 'react-native'
 
 interface Props extends TextProps {
   type?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2' | 'caption'
+  bold?: boolean
 }
 
 export const FText: FC<Props> = ({children, ...props}) => {
   return (
     <Text
       {...props}
-      style={[styles.common, styles[props.type ?? 'body1'], props.style]}>
+      style={[
+        styles.common,
+        styles[props.type ?? 'body1'],
+        props.bold && styles.bold,
+        props.style,
+      ]}>
       {children}
     </Text>
   )
 }
 
 const styles = StyleSheet.create({
+  bold: {
+    fontWeight: 'bold',
+  },
   common: {
     fontFamily: Fonts.SFProDisplayRegular,
     color: Colors.TEXT,

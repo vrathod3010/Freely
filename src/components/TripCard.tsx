@@ -1,5 +1,5 @@
-import {AppState, StyleSheet, TouchableOpacity, View} from 'react-native'
-import React, {FC, useEffect, useRef, useState} from 'react'
+import React, {FC, useEffect, useState} from 'react'
+import {StyleSheet, TouchableOpacity, View} from 'react-native'
 
 import {Card} from 'react-native-elements'
 import {Colors} from '../utils'
@@ -7,6 +7,7 @@ import {FText} from './Text'
 import {NativeStackNavigationProp} from '@react-navigation/native-stack'
 import {RootStackParamList} from '../App'
 import {Trip} from '../models'
+import {useAppState} from '../hooks'
 import {useNavigation} from '@react-navigation/native'
 
 interface Props {
@@ -18,21 +19,9 @@ export const TripCard: FC<Props> = ({item}) => {
       NativeStackNavigationProp<RootStackParamList, 'TripsScreen'>
     >()
 
-  const appState = useRef(AppState.currentState)
-  const [appStateVisible, setAppStateVisible] = useState(appState.current)
-
   const [randomBackground, setRandomBackground] = useState<string>()
 
-  useEffect(() => {
-    const subscription = AppState.addEventListener('change', nextAppState => {
-      appState.current = nextAppState
-      setAppStateVisible(appState.current)
-    })
-
-    return () => {
-      subscription.remove()
-    }
-  }, [])
+  const {appStateVisible} = useAppState()
 
   useEffect(() => {
     if (appStateVisible === 'background') {
@@ -46,6 +35,7 @@ export const TripCard: FC<Props> = ({item}) => {
 
   return (
     <TouchableOpacity
+      activeOpacity={0.8}
       onPress={() => navigation.push('TripDetailScreen', {trip: item})}>
       <Card
         containerStyle={
@@ -54,7 +44,9 @@ export const TripCard: FC<Props> = ({item}) => {
           }
         }>
         <Card.Title>
-          <FText type="h4">{item.name}</FText>
+          <FText bold type="h4">
+            {item.name}
+          </FText>
         </Card.Title>
         <Card.Divider />
         <View style={styles.row1}>
@@ -63,7 +55,9 @@ export const TripCard: FC<Props> = ({item}) => {
         </View>
 
         <View style={styles.row2}>
-          <FText>{item.status}</FText>
+          <FText type="caption" bold>
+            {item.status}
+          </FText>
         </View>
       </Card>
     </TouchableOpacity>

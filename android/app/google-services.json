@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1090405456301",
+    "project_id": "freely-2430a",
+    "storage_bucket": "freely-2430a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090405456301:android:f1e0751bd57c1361042924",
+        "android_client_info": {
+          "package_name": "com.freely"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090405456301-pnc09v0cq4k9upelfnefkp3aka0vbm8p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPeakAJpuv7CXgXDeI-d-mXb4c6RVlYb4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090405456301-pnc09v0cq4k9upelfnefkp3aka0vbm8p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
