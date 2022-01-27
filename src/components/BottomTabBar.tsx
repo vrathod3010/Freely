@@ -1,5 +1,5 @@
 import {Colors, Strings} from '../utils'
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import {StyleSheet, TouchableOpacity, View} from 'react-native'
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs'
 import {FText} from '.'
@@ -33,7 +33,7 @@ export const BottomTabBar = ({
 
           if (!isFocused && !event.defaultPrevented) {
             // The `merge: true` option makes sure that the params inside the tab screen are preserved
-            navigation.navigate({name: route.name, merge: true})
+            navigation.navigate(route.name)
           }
         }
 

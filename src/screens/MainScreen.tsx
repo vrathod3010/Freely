@@ -1,9 +1,9 @@
 import * as React from 'react'
 
+import {Colors, Strings} from '../utils'
 import {HomeScreen, TripsScreen} from '.'
 
 import {BottomTabBar} from '../components'
-import {Strings} from '../utils'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 
 const Tab = createBottomTabNavigator()
@@ -11,10 +11,13 @@ const Tab = createBottomTabNavigator()
 export const MainScreen = () => {
   return (
     <Tab.Navigator
-      tabBar={props => <BottomTabBar {...props} />}
       screenOptions={{
-        headerShown: false,
-      }}>
+        headerTintColor: Colors.PRIMARY_TEXT,
+        headerStyle: {
+          backgroundColor: Colors.SCREEN_BACKGROUND_DARK,
+        },
+      }}
+      tabBar={props => <BottomTabBar {...props} />}>
       <Tab.Screen
         options={{title: Strings.HOME_SCREEN_TITLE}}
         name="HomeScreen"

@@ -6,4 +6,5 @@ export const Colors = {
   TRIP_CARD_BACKGROUND_HIGHLIGHTED: '#C6FBF8',
   PRIMARY_TEXT: '#00f1e5',
   SECONDARY_TEXT: '#e8e8e8',
+  RANDOM_COLORS: ['#03DAC5', '#FFDE03', '#FF0266'],
 }

@@ -6,4 +6,5 @@ export const Strings = {
   HOME_TAB_ICON_UNFOCUSED: 'home-outline',
   TRIPS_TAB_ICON_FOCUSED: 'list',
   TRIPS_TAB_ICON_UNFOCUSED: 'list-outline',
+  DESTINATIONS: 'Destinations',
 }

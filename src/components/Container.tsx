@@ -1,11 +1,12 @@
 import React, {FC} from 'react'
-import {StyleSheet, View, ViewProps} from 'react-native'
+import {SafeAreaView, StyleSheet, View, ViewProps} from 'react-native'
 
 import {Colors} from '../utils'
 
 interface Props extends ViewProps {
   align?: 'center' | 'left' | 'right' | 'stretch'
   justify?: 'middle' | 'top' | 'bottom' | 'space-between' | 'space-around'
+  withSafeArea?: boolean
 }
 
 export const Container: FC<Props> = ({children, ...props}) => {
@@ -18,12 +19,16 @@ export const Container: FC<Props> = ({children, ...props}) => {
         styles[props.justify ?? 'middle'],
         props.style,
       ]}>
-      {children}
+      {props.withSafeArea && (
+        <SafeAreaView style={styles.wrapper}>{children}</SafeAreaView>
+      )}
+      {!props.withSafeArea && children}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  wrapper: {flex: 1},
   container: {
     flex: 1,
     backgroundColor: Colors.SCREEN_BACKGROUND,
